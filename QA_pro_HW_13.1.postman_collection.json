@@ -1,0 +1,1562 @@
+{
+	"info": {
+		"_postman_id": "eaec4521-e578-4ca3-bf09-65c837751028",
+		"name": "QA_pro_HW_13.1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27169443"
+	},
+	"item": [
+		{
+			"name": "Negative Tests",
+			"item": [
+				{
+					"name": "Change User Password with wrong repeatPassword",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldPassword\": \"{{newUserPassword}}\",\n  \"password\": \"{{changedPassword}}\",\n  \"repeatPassword\": \"{{newUserPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/password",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change User Password with wrong Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldPassword\": \"123456\",\n  \"password\": \"{{changedPassword}}\",\n  \"repeatPassword\": \"{{changedPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/password",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change User Email without email",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"\",\n  \"password\": \"{{newUserPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/email",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User SignIn with wrong email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"1\",\n  \"password\": \"{{changedPassword}}\",\n  \"remember\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/signin",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User SignIn with wrong password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"{{changedEmail}}\",\n  \"password\": \"{{12345}}\",\n  \"remember\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/signin",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Expense without Car Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"carId\": \"\",\n  \"reportedAt\": \"{{actualUpdatedMileageAt}}\", \n  \"mileage\": {{newCarMileage}}, \n  \"liters\": {{newLiters}},\n  \"totalCost\": {{newTotalCost}},\n  \"forceMileage\": false\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/expenses",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"expenses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CarBrands",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let testData = \"Audi A8 23587 23589 11 11 12 20 1\"",
+							"let carBrandName = testData.split(\" \")[0]",
+							"let carModelName = testData.split(\" \")[1]",
+							"let carMileage = Number(testData.split(\" \")[2])",
+							"let newCarMileage = Number(testData.split(\" \")[3])",
+							"let newLiters = Number(testData.split(\" \")[4])",
+							"let newTotalCost = Number(testData.split(\" \")[5])",
+							"let changedLiters = Number(testData.split(\" \")[6])",
+							"let changedTotalCost = Number(testData.split(\" \")[7])",
+							"let expectedCarCount = Number(testData.split(\" \")[8])",
+							"pm.collectionVariables.set(\"carBrandName\", carBrandName);",
+							"pm.collectionVariables.set(\"carModelName\", carModelName);",
+							"pm.collectionVariables.set(\"carMileage\", carMileage);",
+							"pm.collectionVariables.set(\"newCarMileage\", newCarMileage);",
+							"pm.collectionVariables.set(\"newLiters\", newLiters);",
+							"pm.collectionVariables.set(\"newTotalCost\", newTotalCost);",
+							"pm.collectionVariables.set(\"changedLiters\", changedLiters);",
+							"pm.collectionVariables.set(\"changedTotalCost\", changedTotalCost);",
+							"pm.collectionVariables.set(\"expectedCarCount\", expectedCarCount);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"var jsonData = pm.response.json().data;",
+							"let title = pm.collectionVariables.get(\"carBrandName\");",
+							"let carBrandId;",
+							"for (let element of jsonData){",
+							"    if (title == element.title) {",
+							"carBrandId = element.id",
+							" break",
+							"    }",
+							"}",
+							"pm.test(\"carBrandId exists\", function () {",
+							"    pm.expect(carBrandId ).to.exist;",
+							"});",
+							"pm.collectionVariables.set(\"carBrandId\", carBrandId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/cars/brands",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cars",
+						"brands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CarModels",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"let carModelId",
+							"let carModelName = pm.collectionVariables.get(\"carModelName\");",
+							"let carBrandId = pm.collectionVariables.get(\"carBrandId\");",
+							"var jsonData = pm.response.json().data;",
+							"for (let element of jsonData){",
+							"    if (element.title == carModelName && element.carBrandId == carBrandId ) {",
+							"carModelId = element.id",
+							" break",
+							"    }",
+							"}",
+							"pm.test(\"carModelId Exist\", function () {",
+							"    pm.expect(carModelId).to.exist;",
+							"});",
+							"pm.collectionVariables.set(\"carModelId\", carModelId);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/cars/models",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cars",
+						"models"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth SignUp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"var jsonData = pm.response.json();",
+							"let userId = jsonData.data.userId",
+							"pm.collectionVariables.set(\"userId\", userId );",
+							"",
+							"var jsonData = pm.response.json();",
+							"let photoFilename = jsonData.data.photoFilename",
+							"pm.collectionVariables.set(\"photoFilename\", photoFilename );",
+							"",
+							"var jsonData = pm.response.json();",
+							"let distanceUnits = jsonData.data.distanceUnits",
+							"pm.collectionVariables.set(\"distanceUnits\", distanceUnits );",
+							"",
+							"var jsonData = pm.response.json();",
+							"let currency = jsonData.data.currency",
+							"pm.collectionVariables.set(\"currency\", currency );"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let testData2 = \"Eka Tia tia@gmail.com Qwerty12345 Qwerty12345\"",
+							"let newUserName = testData2.split(\" \")[0]",
+							"let newUserLastName = testData2.split(\" \")[1]",
+							"let newUserEmail = testData2.split(\" \")[2]",
+							"let newUserPassword = testData2.split(\" \")[3]",
+							"",
+							"pm.collectionVariables.set(\"newUserName\", newUserName);",
+							"pm.collectionVariables.set(\"newUserLastName\", newUserLastName);",
+							"pm.collectionVariables.set(\"newUserEmail\", newUserEmail);",
+							"pm.collectionVariables.set(\"newUserPassword\", newUserPassword);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"{{newUserName}}\",\n  \"lastName\": \"{{newUserLastName}}\",\n  \"email\": \"{{newUserEmail}}\",\n  \"password\": \"{{newUserPassword}}\",\n  \"repeatPassword\": \"{{newUserPassword}}\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/auth/signup",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check UsersData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let expectedUserName = pm.collectionVariables.get(\"newUserName\");",
+							" var jsonData = pm.response.json();",
+							" let actualUserName = jsonData.data.name",
+							"pm.test(\"Users Name verification\", function () {",
+							"    pm.expect(expectedUserName).to.eql(actualUserName);",
+							"    pm.expect(expectedUserName).to.exist",
+							"});",
+							"",
+							"let expectedUserLastName = pm.collectionVariables.get(\"newUserLastName\");",
+							" var jsonData = pm.response.json();",
+							" let actualUserLastName = jsonData.data.lastName",
+							"pm.test(\"Users Last Name verification\", function () {",
+							"    pm.expect(expectedUserLastName).to.eql(actualUserLastName);",
+							"    pm.expect(expectedUserLastName).to.exist",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/users/profile",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User LogOut",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/auth/logout",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User SignIn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let userId = pm.collectionVariables.get(\"userId\");",
+							" var jsonData = pm.response.json();",
+							" let userIdAfterSignin = jsonData.data.userId",
+							" ",
+							"pm.test(\"User's id verification\", function () {",
+							"    pm.expect(userId).to.eql(userIdAfterSignin);",
+							"    pm.expect(userId).to.exist",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"{{newUserEmail}}\",\n  \"password\": \"{{newUserPassword}}\",\n  \"remember\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/auth/signin",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change User Data",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let testData3 = \"Liz Toa user.jpg 2025-01-11 UA liztoa@gmail.com Qwerty99999\"",
+							"let changedUserName = testData3.split(\" \")[0]",
+							"let changedLastName = testData3.split(\" \")[1]",
+							"let changedPhotoFilename = testData3.split(\" \")[2]",
+							"let changedDateBirthe = testData3.split(\" \")[3]",
+							"let changedCountry = testData3.split(\" \")[4]",
+							"let changedEmail = testData3.split(\" \")[5]",
+							"let changedPassword = testData3.split(\" \")[6]",
+							"",
+							"pm.collectionVariables.set(\"changedUserName\", changedUserName);",
+							"pm.collectionVariables.set(\"changedLastName\", changedLastName);",
+							"pm.collectionVariables.set(\"changedPhotoFilename\", changedPhotoFilename);",
+							"pm.collectionVariables.set(\"changedDateBirthe\", changedDateBirthe );",
+							"pm.collectionVariables.set(\"changedCountry\", changedCountry);",
+							"pm.collectionVariables.set(\"changedEmail\", changedEmail);",
+							"pm.collectionVariables.set(\"changedPassword\", changedPassword);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"photo\": \"{{changedPhotoFilename}}\",\n  \"name\": \"{{changedUserName}}\",\n  \"lastName\": \"{{changedLastName}}\",\n  \"dateBirth\": \"{{changedDateBirthe}}\",\n  \"country\": \"{{changedCountry}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users/profile",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change User Email",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"{{changedEmail}}\",\n  \"password\": \"{{newUserPassword}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users/email",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change User Password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"oldPassword\": \"{{newUserPassword}}\",\n  \"password\": \"{{changedPassword}}\",\n  \"repeatPassword\": \"{{changedPassword}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users/password",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check UsersData Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let expectedUserName = pm.collectionVariables.get(\"changedUserName\");",
+							" var jsonData = pm.response.json();",
+							" let actualUserName = jsonData.data.name",
+							"pm.test(\"Users Name was changed successfully\", function () {",
+							"    pm.expect(expectedUserName).to.eql(actualUserName);",
+							"    pm.expect(expectedUserName).to.exist",
+							"});",
+							"",
+							"let expectedUserLastName = pm.collectionVariables.get(\"changedLastName\");",
+							" var jsonData = pm.response.json();",
+							" let actualUserLastName = jsonData.data.lastName",
+							"pm.test(\"Users Last Name  was changed successfully\", function () {",
+							"    pm.expect(expectedUserLastName).to.eql(actualUserLastName);",
+							"    pm.expect(expectedUserLastName).to.exist",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/users/profile",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User LogOut",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/auth/logout",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User SignIn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let userId = pm.collectionVariables.get(\"userId\");",
+							" var jsonData = pm.response.json();",
+							" let userIdAfterSignin = jsonData.data.userId",
+							" ",
+							"pm.test(\"User's id verification\", function () {",
+							"    pm.expect(userId).to.eql(userIdAfterSignin);",
+							"    pm.expect(userId).to.exist",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"{{changedEmail}}\",\n  \"password\": \"{{changedPassword}}\",\n  \"remember\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/auth/signin",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"let carId = jsonData.data.id",
+							"pm.collectionVariables.set(\"carId\", carId );",
+							"",
+							"var jsonData = pm.response.json();",
+							"let carCreatedAt = jsonData.data.carCreatedAt.split(\"T\")[0]",
+							"pm.collectionVariables.set(\"carCreatedAt\", carCreatedAt );",
+							"",
+							"let expectedCarBarandId = pm.collectionVariables.get(\"carBrandId\");",
+							" var jsonData = pm.response.json();",
+							" let actualCarBrandId = jsonData.data.carBrandId",
+							"pm.test(\"Car brand id verification\", function () {",
+							"    pm.expect(expectedCarBarandId).to.eql(actualCarBrandId);",
+							"    pm.expect(expectedCarBarandId).to.exist",
+							"});",
+							"let expectedCarBarandName = pm.collectionVariables.get(\"carBrandName\");",
+							" var jsonData = pm.response.json();",
+							" let actualCarBrandName = jsonData.data.brand",
+							"pm.test(\"Car brand name id verification\", function () {",
+							"    pm.expect(expectedCarBarandName).to.eql(actualCarBrandName);",
+							"    pm.expect(expectedCarBarandName).to.exist",
+							"});",
+							"",
+							"let expectedCarModelId = pm.collectionVariables.get(\"carModelId\");",
+							" var jsonData = pm.response.json();",
+							" let actualCarModelId = jsonData.data.carModelId",
+							"pm.test(\"Car model id verification\", function () {",
+							"    pm.expect(expectedCarModelId).to.eql(actualCarModelId);",
+							"    pm.expect(expectedCarModelId).to.exist",
+							"});",
+							"",
+							"let expectedCarModelName = pm.collectionVariables.get(\"carModelName\");",
+							" var jsonData = pm.response.json();",
+							" let actualCarModelName = jsonData.data.model",
+							"pm.test(\"Car model name verification\", function () {",
+							"    pm.expect(expectedCarModelName).to.eql(actualCarModelName);",
+							"    pm.expect(expectedCarModelName).to.exist",
+							"});",
+							"",
+							"",
+							"let expectedInitialMileage = pm.collectionVariables.get(\"carMileage\");",
+							" var jsonData = pm.response.json();",
+							" let actualInitialMileage = jsonData.data.initialMileage",
+							"pm.test(\"Initial Mileage id verification\", function () {",
+							"    pm.expect(expectedInitialMileage).to.eql(actualInitialMileage);",
+							"    pm.expect(expectedInitialMileage).to.exist",
+							"});",
+							"",
+							"let expectedMileage = pm.collectionVariables.get(\"carMileage\");",
+							" var jsonData = pm.response.json();",
+							" let actualMileage = jsonData.data.mileage",
+							"pm.test(\"Mileage id verification\", function () {",
+							"    pm.expect(expectedMileage).to.eql(actualMileage);",
+							"    pm.expect(expectedMileage).to.exist",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"let carsArray = new Array(jsonData.data.id)",
+							"let carsNumber = carsArray.length",
+							"let UserCarsNumber = pm.collectionVariables.get(\"carsNumber\");",
+							"",
+							"",
+							"var jsonData = pm.response.json();",
+							"let actualUpdatedMileageAt = jsonData.data.updatedMileageAt",
+							"pm.collectionVariables.set(\"actualUpdatedMileageAt\", actualUpdatedMileageAt);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"carBrandId\": {{carBrandId}},\n  \"carModelId\": {{carModelId}},\n  \"mileage\": {{carMileage}}\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/cars",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Expense",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let expectedCarId = pm.collectionVariables.get(\"carId\");",
+							" var jsonData = pm.response.json();",
+							" let actualCarId = jsonData.data.carId",
+							"pm.test(\"Car Id verification\", function () {",
+							"    pm.expect(expectedCarId).to.eql(actualCarId);",
+							"    pm.expect(expectedCarId).to.exist",
+							"});",
+							"",
+							"let expectedReportedAt = pm.collectionVariables.get(\"actualUpdatedMileageAt\");",
+							" var jsonData = pm.response.json();",
+							" let actualReportedAt = jsonData.data.reportedAt",
+							"pm.test(\"Reported At verification\", function () {",
+							"    pm.expect(expectedReportedAt).to.eql(actualReportedAt);",
+							"    pm.expect(expectedReportedAt).to.exist",
+							"});",
+							"",
+							"let expectedLiters = pm.collectionVariables.get(\"newLiters\");",
+							" var jsonData = pm.response.json();",
+							" let actualLiters = jsonData.data.liters",
+							"pm.test(\"Liters verification\", function () {",
+							"    pm.expect(expectedLiters).to.eql(actualLiters);",
+							"    pm.expect(expectedLiters).to.exist",
+							"});",
+							"",
+							"let expectedMileage = pm.collectionVariables.get(\"newCarMileage\");",
+							" var jsonData = pm.response.json();",
+							" let actualMileage = jsonData.data.mileage",
+							"pm.test(\"Mileage verification\", function () {",
+							"    pm.expect(expectedMileage).to.eql(actualMileage);",
+							"    pm.expect(expectedMileage).to.exist",
+							"});",
+							"",
+							"let expectedTotalCost = pm.collectionVariables.get(\"newTotalCost\");",
+							" var jsonData = pm.response.json();",
+							" let actualTotalCost = jsonData.data.totalCost",
+							"pm.test(\"Total Cost verification\", function () {",
+							"    pm.expect(expectedTotalCost).to.eql(actualTotalCost);",
+							"    pm.expect(expectedTotalCost).to.exist",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"carId\": {{carId}},\n  \"reportedAt\": \"{{actualUpdatedMileageAt}}\", \n  \"mileage\": {{newCarMileage}}, \n  \"liters\": {{newLiters}},\n  \"totalCost\": {{newTotalCost}},\n  \"forceMileage\": false\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/expenses",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Users Car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let expectedUsersCarCount = pm.collectionVariables.get(\"usersCarCount\");",
+							"var jsonData = pm.response.json();",
+							"let carsAfterSignInArray = new Array(jsonData.data.id)",
+							"let carsAfterSignInArrayCount = carsAfterSignInArray.length",
+							"",
+							"pm.test(\"User's cars list verification\", function () {",
+							"    pm.expect(expectedUsersCarCount)==(carsAfterSignInArrayCount);",
+							"     pm.expect(carsAfterSignInArrayCount).to.exist",
+							"});",
+							"console.log(carsAfterSignInArrayCount)",
+							"console.log(expectedUsersCarCount)",
+							"",
+							"var jsonData = pm.response.json().data;",
+							"let carIdAfterSignIn;",
+							"let expectedCarId = pm.collectionVariables.get(\"carId\");",
+							"for (let element of jsonData){",
+							"    if (expectedCarId == element.id) {",
+							"carIdAfterSignIn = element.id",
+							" break",
+							"    }",
+							"}",
+							"pm.test(\"Car Id verified \", function () {",
+							"    pm.expect(expectedCarId).to.eql(carIdAfterSignIn);",
+							"    pm.expect(carIdAfterSignIn).to.exist;",
+							"});",
+							"",
+							"var jsonData = pm.response.json().data;",
+							"let carBrandIdAfterSignIn;",
+							"let expectedCarBrandId = pm.collectionVariables.get(\"carBrandId\");",
+							"for (let element of jsonData){",
+							"    if (expectedCarBrandId == element.carBrandId) {",
+							"carBrandIdAfterSignIn = element.carBrandId",
+							" break",
+							"    }",
+							"}",
+							"pm.test(\"Car Brand Id verified \", function () {",
+							"    pm.expect(expectedCarBrandId).to.eql(carBrandIdAfterSignIn);",
+							"    pm.expect(carBrandIdAfterSignIn).to.exist;",
+							"});",
+							"",
+							"var jsonData = pm.response.json().data;",
+							"let carModelIdAfterSignIn;",
+							"let expectedCarModelId = pm.collectionVariables.get(\"carModelId\");",
+							"for (let element of jsonData){",
+							"    if (expectedCarModelId == element.carModelId) {",
+							"carModelIdAfterSignIn = element.carModelId",
+							" break",
+							"    }",
+							"}",
+							"pm.test(\"Car Model Id verified \", function () {",
+							"    pm.expect(expectedCarModelId).to.eql(carModelIdAfterSignIn);",
+							"    pm.expect(carModelIdAfterSignIn).to.exist;",
+							"});",
+							"",
+							"var jsonData = pm.response.json().data;",
+							"let initialMileageAfterSignIn;",
+							"let expectedInitialMileage = pm.collectionVariables.get(\"carMileage\");",
+							"for (let element of jsonData){",
+							"    if (expectedInitialMileage == element.initialMileage) {",
+							"initialMileageAfterSignIn =Number(element.initialMileage) ",
+							" break",
+							"    }",
+							"}",
+							"pm.test(\"Initial Mileage verified \", function () {",
+							"    pm.expect(expectedInitialMileage).to.eql(initialMileageAfterSignIn);",
+							"    pm.expect(initialMileageAfterSignIn).to.exist;",
+							"});",
+							"",
+							"var jsonData = pm.response.json().data;",
+							"let updatedMileageAfterSignIn;",
+							"let expectedUpdatedMileage = pm.collectionVariables.get(\"newCarMileage\");",
+							"for (let element of jsonData){",
+							"    if (expectedUpdatedMileage == element.mileage) {",
+							"updatedMileageAfterSignIn = Number (element.mileage) ",
+							" break",
+							"    }",
+							"}",
+							"pm.test(\"Updated Mileage verified \", function () {",
+							"    pm.expect(expectedUpdatedMileage).to.eql(updatedMileageAfterSignIn);",
+							"    pm.expect(updatedMileageAfterSignIn).to.exist;",
+							"});",
+							"",
+							"var jsonData = pm.response.json().data;",
+							"let actualCarBrand;",
+							"let expectedCarBrand = pm.collectionVariables.get(\"carBrandName\");",
+							"for (let element of jsonData){",
+							"    if (expectedCarBrand  == element.brand) {",
+							"actualCarBrand = element.brand ",
+							" break",
+							"    }",
+							"}",
+							"pm.test(\" Car brand verified \", function () {",
+							"    pm.expect(expectedCarBrand).to.eql(actualCarBrand);",
+							"    pm.expect(actualCarBrand).to.exist;",
+							"});",
+							"",
+							"",
+							"var jsonData = pm.response.json().data;",
+							"let actualCarModel;",
+							"let expectedCarModel = pm.collectionVariables.get(\"carModelName\");",
+							"for (let element of jsonData){",
+							"    if (expectedCarModel == element.model) {",
+							"actualCarModel = element.model",
+							" break",
+							"    }",
+							"}",
+							"pm.test(\" Car brand verified \", function () {",
+							"    pm.expect(expectedCarModel).to.eql(actualCarModel);",
+							"    pm.expect(actualCarModel).to.exist;",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/cars",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Users Expense",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json().data;",
+							"let carId = pm.collectionVariables.get(\"carId\");",
+							"let carExpenseId;",
+							"for (let element of jsonData){",
+							"    if (carId == element.carId) {",
+							"carExpenseId = element.id",
+							" break",
+							"    }",
+							"}",
+							"pm.test(\"carExpenseId exists\", function () {",
+							"    pm.expect(carExpenseId ).to.exist;",
+							"});",
+							"pm.collectionVariables.set(\"carExpenseId\", carExpenseId);",
+							"",
+							"var jsonData = pm.response.json().data;",
+							"let actualCarId ;",
+							"let expectedCarId = pm.collectionVariables.get(\"carId\");",
+							"for (let element of jsonData){",
+							"    if (expectedCarId == element.carId ) {",
+							"actualCarId = element.carId",
+							" break",
+							"    }",
+							"}",
+							"pm.test(\"Car Id verified \", function () {",
+							"    pm.expect(expectedCarId).to.eql(actualCarId);",
+							"    pm.expect(actualCarId).to.exist;",
+							"});",
+							"",
+							"var jsonData = pm.response.json().data;",
+							"let actualReportedAt;",
+							"// let ReportedAt = pm.collectionVariables.get(\"actualUpdatedMileageAt\");",
+							"// let expectedReportedAt = ReportedAt.split(\"T\")[0]",
+							"// for (let element of jsonData){",
+							"//     if (expectedCarId == element.carId ) {",
+							"// actualReportedAt = element.reportedAt",
+							"//  break",
+							"//     }",
+							"// }",
+							"// pm.test(\"Reported At verified \", function () {",
+							"//     pm.expect(expectedReportedAt).to.eql(actualReportedAt);",
+							"//     pm.expect(actualReportedAt).to.exist;",
+							"// });",
+							"",
+							"var jsonData = pm.response.json().data;",
+							"let actualMileage;",
+							"let expectedMileage= pm.collectionVariables.get(\"newCarMileage\");",
+							"for (let element of jsonData){",
+							"    if (expectedMileage == element.mileage) {",
+							"actualMileage = element.mileage",
+							" break",
+							"    }",
+							"}",
+							"pm.test(\"Mileage verified \", function () {",
+							"    pm.expect(expectedMileage).to.eql(actualMileage);",
+							"    pm.expect(actualMileage).to.exist;",
+							"});",
+							"",
+							"var jsonData = pm.response.json().data;",
+							"let actualLiters;",
+							"let expectedLiters= pm.collectionVariables.get(\"newLiters\");",
+							"for (let element of jsonData){",
+							"    if (expectedLiters == element.liters) {",
+							"actualLiters = element.liters",
+							" break",
+							"    }",
+							"}",
+							"pm.test(\"Liters verified \", function () {",
+							"    pm.expect(expectedLiters).to.eql(actualLiters);",
+							"    pm.expect(actualLiters).to.exist;",
+							"});",
+							"",
+							"var jsonData = pm.response.json().data;",
+							"let actualTotalCost;",
+							"let expectedTotalCost = pm.collectionVariables.get(\"newTotalCost\");",
+							"for (let element of jsonData){",
+							"    if (expectedLiters == element.liters) {",
+							"actualTotalCost = element.totalCost",
+							" break",
+							"    }",
+							"}",
+							"pm.test(\"Liters verified \", function () {",
+							"    pm.expect(expectedLiters).to.eql(actualTotalCost);",
+							"    pm.expect(actualTotalCost).to.exist;",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/expenses",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/users",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "https://qauto.forstudy.space/api",
+			"type": "string"
+		},
+		{
+			"key": "carBrandName",
+			"value": ""
+		},
+		{
+			"key": "carModelName",
+			"value": ""
+		},
+		{
+			"key": "CarMileage",
+			"value": ""
+		},
+		{
+			"key": "carBrandId",
+			"value": ""
+		},
+		{
+			"key": "CarModelId",
+			"value": ""
+		},
+		{
+			"key": "carBrandName)",
+			"value": ""
+		},
+		{
+			"key": "carModelName)",
+			"value": ""
+		},
+		{
+			"key": "carBrandId)",
+			"value": ""
+		},
+		{
+			"key": "carModelId",
+			"value": ""
+		},
+		{
+			"key": "carMileage",
+			"value": ""
+		},
+		{
+			"key": "newUserName",
+			"value": ""
+		},
+		{
+			"key": "newUserLastName",
+			"value": ""
+		},
+		{
+			"key": "newUserEmail",
+			"value": ""
+		},
+		{
+			"key": "newUserPassword",
+			"value": ""
+		},
+		{
+			"key": "newUserRepeatPassword",
+			"value": ""
+		},
+		{
+			"key": "UserId",
+			"value": ""
+		},
+		{
+			"key": "userId",
+			"value": ""
+		},
+		{
+			"key": "carId",
+			"value": ""
+		},
+		{
+			"key": "carCreatedAt",
+			"value": ""
+		},
+		{
+			"key": "newCarMileage",
+			"value": ""
+		},
+		{
+			"key": "newLiters",
+			"value": ""
+		},
+		{
+			"key": "newTotalCost",
+			"value": ""
+		},
+		{
+			"key": "actualupdateMilageAt",
+			"value": ""
+		},
+		{
+			"key": "actualUpdatedMileageAt",
+			"value": ""
+		},
+		{
+			"key": "changedLiters",
+			"value": ""
+		},
+		{
+			"key": "changedTotalCost",
+			"value": ""
+		},
+		{
+			"key": "carExpenseId",
+			"value": ""
+		},
+		{
+			"key": "expectedCarCount",
+			"value": ""
+		},
+		{
+			"key": "photoFilename",
+			"value": ""
+		},
+		{
+			"key": "distanceUnits",
+			"value": ""
+		},
+		{
+			"key": "currency",
+			"value": ""
+		},
+		{
+			"key": "changedUserName",
+			"value": ""
+		},
+		{
+			"key": "changedLastName",
+			"value": ""
+		},
+		{
+			"key": "changedPhotoFilename",
+			"value": ""
+		},
+		{
+			"key": "changedDateBirthe",
+			"value": ""
+		},
+		{
+			"key": "changedCountry",
+			"value": ""
+		},
+		{
+			"key": "changedEmail",
+			"value": ""
+		},
+		{
+			"key": "changedPassword ",
+			"value": ""
+		},
+		{
+			"key": "changedPassword",
+			"value": ""
+		}
+	]
+}
