@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "cbb15b8c-04ee-4f3c-a22a-5a9138e9c373",
+		"name": "QA_pro_HW_18",
+		"description": "This is a collection of different SOAP APIs that are completley public and do not require any authentication, making it easier for consumers to play with and understand what APIs are all about by seeing the many different ways in which APIs can be used.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27169443"
+	},
+	"item": [
+		{
+			"name": "Book ISBN Numbers HW",
+			"item": [
+				{
+					"name": "Is Valid ISBN13 Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"// Отримуємо тіло відповіді як XML (переконайтеся, що назва вузла і простори імен правильні)",
+									"let xmlResponse = xml2Json(pm.response.text()); // Потрібна бібліотека xml2Json",
+									"",
+									"// 1. Перевірка, чи повернулась відповідь (основний тест)",
+									"pm.test(\"Response body is not empty\", () => {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"// 2. Перевірка на наявність ISBN",
+									"pm.test(\"Response contains ISBN\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']['soap:Body']['LookupBookResponse']['LookupBookResult']['sISBN']).to.not.be.undefined;",
+									"});",
+									"",
+									"// 3. Перевірка на правильність ISBN (приклад)",
+									"pm.test(\"ISBN is valid\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']['soap:Body']['LookupBookResponse']['LookupBookResult']['sISBN']).to.eql(\"9780321765723\"); // Замініть на очікуваний ISBN",
+									"});",
+									"",
+									"pm.test(\"Response contains Title\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']['soap:Body']['LookupBookResponse']['LookupBookResult']['sTitle']).to.not.be.undefined;",
+									"});",
+									"",
+									"// 5. Перевірка на наявність Author",
+									"pm.test(\"Response contains Author\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']['soap:Body']['LookupBookResponse']['LookupBookResult']['sAuthor']).to.not.be.undefined;",
+									"});",
+									"",
+									"// 6. Перевірка на тип даних Title (приклад)",
+									"pm.test(\"Title is a string\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']['soap:Body']['LookupBookResponse']['LookupBookResult']['sTitle']).to.be.a('string');",
+									"});",
+									"",
+									"// 7. Перевірка на тип даних Author (приклад)",
+									"pm.test(\"Author is a string\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']['soap:Body']['LookupBookResponse']['LookupBookResult']['sAuthor']).to.be.a('string');",
+									"});",
+									"",
+									"// 8. Перевірка на наявність Publisher",
+									"pm.test(\"Response contains Publisher\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']['soap:Body']['LookupBookResponse']['LookupBookResult']['sPublisher']).to.not.be.undefined;",
+									"});",
+									"",
+									"// 9. Перевірка, чи Title не є порожнім",
+									"pm.test(\"Title is not empty\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']['soap:Body']['LookupBookResponse']['LookupBookResult']['sTitle']).to.not.be.empty;",
+									"});",
+									"",
+									"// 10. Перевірка на наявність Publication Date",
+									"pm.test(\"Response contains Publication Date\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']['soap:Body']['LookupBookResponse']['LookupBookResult']['sPublicationDate']).to.not.be.undefined;",
+									"});",
+									"",
+									"ChatGPT4 | Midjourney, [21.02.2025 12:39]",
+									"Важливі моменти:",
+									"",
+									"•  xml2Json(pm.response.text()): Ця функція (або подібна) необхідна для перетворення XML відповіді в JSON, щоб з нею було зручно працювати в JavaScript. Postman не має вбудованої функції для цього, тому вам доведеться додати бібліотеку. Один з варіантів - додати код бібліотеки xml2json прямо у вкладку Pre-request Script (пошукайте в інтернеті \"xml2json javascript library\").",
+									"•  Простори імен: SOAP використовує простори імен (namespaces) для уникнення конфліктів імен елементів. У ваших тестах потрібно правильно вказувати ці простори імен. Зверніть увагу на xmlResponse['soap:Envelope'], xmlResponse['web:LookupBookResponse'] і т.д. Замініть soap і web на правильні префікси просторів імен, які використовуються у вашій відповіді.",
+									"•  Структура XML: Структура XML відповіді може бути складною. Використовуйте console.log(xmlResponse) у ваших тестах, щоб вивести структуру в консоль і зрозуміти, як звертатися до потрібних елементів.",
+									"•  Адаптація тестів: Приклади тестів вище - це лише відправна точка. Вам потрібно їх адаптувати до конкретних полів та значень, які повертає ваш API.",
+									"•  Другий запит (\"OtherBookOperation\"): Для другого запиту (\"OtherBookOperation\") повторіть той же процес: вивчіть структуру запиту, визначте тестові сценарії та напишіть JavaScript тести. Тести будуть залежати від того, що саме робить цей запит.",
+									"",
+									"Інструкції для Postman:",
+									"",
+									"1. Вкладка \"Tests\": Відкрийте запит у Postman і перейдіть на вкладку \"Tests\".",
+									"2. JavaScript: Введіть JavaScript код тестів у текстове поле.",
+									"3. Запуск: Запустіть запит. Postman автоматично виконає тести і покаже результати.",
+									"4. Консоль: Використовуйте console.log() у ваших тестах, щоб виводити інформацію в консоль Postman (View -> Show Postman Console). Це корисно для налагодження і вивчення структури відповіді.",
+									"",
+									"Через обмеження доступу до вашої конкретної колекції, я не можу надати вам більш точні тести. Але, використовуючи ці інструкції, ви зможете створити надійні тести для вашого SOAP API.",
+									"",
+									"ChatGPT4 | Midjourney, [21.02.2025 12:44]",
+									"// Отримуємо тіло відповіді як XML і перетворюємо в JSON",
+									"let xmlResponse = xml2Json(pm.response.text());",
+									"",
+									"// 1. Перевірка, чи тіло відповіді не порожнє",
+									"pm.test(\"Response body is not empty\", () => {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"// 2. Перевірка, чи статус код 200",
+									"pm.test(\"Status code is 200\", () => {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// 3. Перевірка наявності кореневого елементу Envelope",
+									"pm.test(\"Response contains Envelope root element\", () => {",
+									"    pm.expect(xmlResponse).to.have.property('soap:Envelope');",
+									"});",
+									"",
+									"// 4. Перевірка наявності елементу Body",
+									"pm.test(\"Response contains Body element\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']).to.have.property('soap:Body');",
+									"});",
+									"",
+									"// 5. Перевірка наявності елементу IsValidISBN13Response",
+									"pm.test(\"Response contains IsValidISBN13Response element\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']['soap:Body']).to.have.property('IsValidISBN13Response');",
+									"});",
+									"",
+									"// 6. Перевірка наявності елементу IsValidISBN13Result",
+									"pm.test(\"Response contains IsValidISBN13Result element\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']['soap:Body']['IsValidISBN13Response']).to.have.property('IsValidISBN13Result');",
+									"});",
+									"",
+									"",
+									"pm.test(\"IsValidISBN13Result is a boolean\", () => {",
+									"    const result = xmlResponse['soap:Envelope']['soap:Body']['IsValidISBN13Response']['IsValidISBN13Result'];",
+									"    pm.expect(result === 'true' || result === 'false').to.be.true;",
+									"});",
+									"",
+									"pm.test(\"ISBN is valid\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']['soap:Body']['IsValidISBN13Response']['IsValidISBN13Result']).to.eql('true'); // Змініть на 'false', якщо тестуєте невалідний ISBN",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response uses the correct namespace\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']['soap:Body']['IsValidISBN13Response']['@xmlns']).to.eql('http://webservices.daehosting.com/ISBN'); ",
+									"});",
+									"",
+									"pm.test(\"IsValidISBN13Result is a string\", () => {",
+									"    pm.expect(xmlResponse['soap:Envelope']['soap:Body']['IsValidISBN13Response']['IsValidISBN13Result']).to.be.a('string');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=utf-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <IsValidISBN13 xmlns=\"http://webservices.daehosting.com/ISBN\">\n      <sISBN>978-1-4612-9090-2</sISBN>\n    </IsValidISBN13>\n  </soap:Body>\n</soap:Envelope>"
+						},
+						"url": {
+							"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
+							"protocol": "http",
+							"host": [
+								"webservices",
+								"daehosting",
+								"com"
+							],
+							"path": [
+								"services",
+								"isbnservice.wso"
+							]
+						},
+						"description": "The test is done by calculation on the first 12 digits and compare the result with the checksum number at the end. You have to pass a 13 digits number."
+					},
+					"response": []
+				},
+				{
+					"name": "Is Valid ISBN10 Number",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=utf-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <IsValidISBN10 xmlns=\"http://webservices.daehosting.com/ISBN\">\n      <sISBN>0-19-852663-6</sISBN>\n    </IsValidISBN10>\n  </soap:Body>\n</soap:Envelope>"
+						},
+						"url": {
+							"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
+							"protocol": "http",
+							"host": [
+								"webservices",
+								"daehosting",
+								"com"
+							],
+							"path": [
+								"services",
+								"isbnservice.wso"
+							]
+						},
+						"description": "The test is done by calculation on the first 9 digits and compare the result with the checksum number at the end. You have to pass a 10 digits number or 8 digits and an X."
+					},
+					"response": []
+				}
+			],
+			"description": "SOAP APIs for book ISBN numbers.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
