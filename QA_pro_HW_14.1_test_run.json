@@ -1,0 +1,575 @@
+{
+	"id": "7ec6698a-6fee-4a88-9ab5-e77247dea8fa",
+	"name": "QA_pro_HW_14.1 External",
+	"timestamp": "2025-03-14T14:07:23.018Z",
+	"collection_id": "27169443-ef1a3cb7-e90c-421e-9c35-b25d42cf5289",
+	"folder_id": 0,
+	"environment_id": "27169443-f71080b3-6dd2-43a5-b711-8e94ec4a450a",
+	"totalPass": 90,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-03-14T14:07:19.969Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "2061d213-1fb1-4e58-a53c-d769e69ee746",
+			"name": "CarBrands",
+			"url": "https://qauto.forstudy.space/api/cars/brands",
+			"time": 46,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"carBrandId exists": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 2,
+					"fail": 0
+				},
+				"carBrandId exists": {
+					"pass": 2,
+					"fail": 0
+				}
+			},
+			"times": [
+				56,
+				46
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"carBrandId exists": true
+				},
+				{
+					"Status code is 200": true,
+					"carBrandId exists": true
+				}
+			]
+		},
+		{
+			"id": "da175b71-49f5-4937-b9fa-2bb05fda2d29",
+			"name": "CarModels",
+			"url": "https://qauto.forstudy.space/api/cars/models",
+			"time": 46,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"carModelId Exist": true,
+				"Schema of Car Models request is valid ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 2,
+					"fail": 0
+				},
+				"carModelId Exist": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Schema of Car Models request is valid ": {
+					"pass": 2,
+					"fail": 0
+				}
+			},
+			"times": [
+				47,
+				46
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"carModelId Exist": true,
+					"Schema of Car Models request is valid ": true
+				},
+				{
+					"Status code is 200": true,
+					"carModelId Exist": true,
+					"Schema of Car Models request is valid ": true
+				}
+			]
+		},
+		{
+			"id": "3ffe5e4e-472f-4fd5-8183-8dde83c9bc3e",
+			"name": "Auth SignUp",
+			"url": "https://qauto.forstudy.space/api/auth/signup",
+			"time": 768,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Content-Type is present": true,
+				"Schema of Users SignUp request is valid ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Schema of Users SignUp request is valid ": {
+					"pass": 2,
+					"fail": 0
+				}
+			},
+			"times": [
+				770,
+				768
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Content-Type is present": true,
+					"Schema of Users SignUp request is valid ": true
+				},
+				{
+					"Status code is 201": true,
+					"Content-Type is present": true,
+					"Schema of Users SignUp request is valid ": true
+				}
+			]
+		},
+		{
+			"id": "979d5560-c29b-45e6-980b-7ff08fc33096",
+			"name": "Check UsersData",
+			"url": "https://qauto.forstudy.space/api/users/profile",
+			"time": 47,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Users Name is text": true,
+				"Users Last Name is text": true,
+				"Body matches string Name": true,
+				"Body matches string last Name": true,
+				"Status code name has string": true,
+				"Response time is less than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Users Name is text": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Users Last Name is text": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Body matches string Name": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Body matches string last Name": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Status code name has string": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 2,
+					"fail": 0
+				}
+			},
+			"times": [
+				46,
+				47
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Users Name is text": true,
+					"Users Last Name is text": true,
+					"Body matches string Name": true,
+					"Body matches string last Name": true,
+					"Status code name has string": true,
+					"Response time is less than 200ms": true
+				},
+				{
+					"Status code is 200": true,
+					"Users Name is text": true,
+					"Users Last Name is text": true,
+					"Body matches string Name": true,
+					"Body matches string last Name": true,
+					"Status code name has string": true,
+					"Response time is less than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "9c3f94a2-1e96-4ddd-b513-ceb5900ea056",
+			"name": "Add New Car",
+			"url": "https://qauto.forstudy.space/api/cars",
+			"time": 51,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Car brand id verification": true,
+				"Car brand name id verification": true,
+				"Car model id verification": true,
+				"Car model name verification": true,
+				"Initial Mileage id verification": true,
+				"Mileage id verification": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Car brand id verification": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Car brand name id verification": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Car model id verification": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Car model name verification": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Initial Mileage id verification": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Mileage id verification": {
+					"pass": 2,
+					"fail": 0
+				}
+			},
+			"times": [
+				50,
+				51
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Car brand id verification": true,
+					"Car brand name id verification": true,
+					"Car model id verification": true,
+					"Car model name verification": true,
+					"Initial Mileage id verification": true,
+					"Mileage id verification": true
+				},
+				{
+					"Status code is 201": true,
+					"Car brand id verification": true,
+					"Car brand name id verification": true,
+					"Car model id verification": true,
+					"Car model name verification": true,
+					"Initial Mileage id verification": true,
+					"Mileage id verification": true
+				}
+			]
+		},
+		{
+			"id": "eecfc693-8068-4402-9b34-f7811bd30864",
+			"name": "Add New Expense",
+			"url": "https://qauto.forstudy.space/api/expenses",
+			"time": 53,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Check new mileage": true,
+				"Status code is 200": true,
+				"Car Id verification": true,
+				"Reported At verification": true,
+				"Liters verification": true,
+				"Mileage verification": true,
+				"Total Cost verification": true
+			},
+			"testPassFailCounts": {
+				"Check new mileage": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Car Id verification": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Reported At verification": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Liters verification": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Mileage verification": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Total Cost verification": {
+					"pass": 2,
+					"fail": 0
+				}
+			},
+			"times": [
+				54,
+				53
+			],
+			"allTests": [
+				{
+					"Check new mileage": true,
+					"Status code is 200": true,
+					"Car Id verification": true,
+					"Reported At verification": true,
+					"Liters verification": true,
+					"Mileage verification": true,
+					"Total Cost verification": true
+				},
+				{
+					"Check new mileage": true,
+					"Status code is 200": true,
+					"Car Id verification": true,
+					"Reported At verification": true,
+					"Liters verification": true,
+					"Mileage verification": true,
+					"Total Cost verification": true
+				}
+			]
+		},
+		{
+			"id": "a87df5ed-96cc-49f5-9570-d6235a4bfeb8",
+			"name": "Check Users Expense",
+			"url": "https://qauto.forstudy.space/api/expenses",
+			"time": 54,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"carExpenseId exists": true,
+				"Car Id verified ": true,
+				"Mileage verified ": true,
+				"Liters verified ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 2,
+					"fail": 0
+				},
+				"carExpenseId exists": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Car Id verified ": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Mileage verified ": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Liters verified ": {
+					"pass": 3,
+					"fail": 0
+				}
+			},
+			"times": [
+				56,
+				54
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"carExpenseId exists": true,
+					"Car Id verified ": true,
+					"Mileage verified ": true,
+					"Liters verified ": true
+				},
+				{
+					"Status code is 200": true,
+					"carExpenseId exists": true,
+					"Car Id verified ": true,
+					"Mileage verified ": true,
+					"Liters verified ": true
+				}
+			]
+		},
+		{
+			"id": "384febe6-c1e4-4e14-8f53-7c6b95b65df5",
+			"name": "Check Users Car",
+			"url": "https://qauto.forstudy.space/api/cars",
+			"time": 48,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"User's cars list verification": true,
+				"Car Id verified ": true,
+				"Car Brand Id verified ": true,
+				"Car Model Id verified ": true,
+				"Initial Mileage verified ": true,
+				"Updated Mileage verified ": true,
+				" Car brand verified ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 2,
+					"fail": 0
+				},
+				"User's cars list verification": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Car Id verified ": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Car Brand Id verified ": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Car Model Id verified ": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Initial Mileage verified ": {
+					"pass": 2,
+					"fail": 0
+				},
+				"Updated Mileage verified ": {
+					"pass": 2,
+					"fail": 0
+				},
+				" Car brand verified ": {
+					"pass": 3,
+					"fail": 0
+				}
+			},
+			"times": [
+				47,
+				48
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"User's cars list verification": true,
+					"Car Id verified ": true,
+					"Car Brand Id verified ": true,
+					"Car Model Id verified ": true,
+					"Initial Mileage verified ": true,
+					"Updated Mileage verified ": true,
+					" Car brand verified ": true
+				},
+				{
+					"Status code is 200": true,
+					"User's cars list verification": true,
+					"Car Id verified ": true,
+					"Car Brand Id verified ": true,
+					"Car Model Id verified ": true,
+					"Initial Mileage verified ": true,
+					"Updated Mileage verified ": true,
+					" Car brand verified ": true
+				}
+			]
+		},
+		{
+			"id": "804fdc52-1819-4cca-9bf1-eb38c4906b4c",
+			"name": "DeleteUser",
+			"url": "https://qauto.forstudy.space/api/users",
+			"time": 47,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 2,
+					"fail": 0
+				}
+			},
+			"times": [
+				48,
+				47
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 2,
+	"totalTime": 2334,
+	"collection": {
+		"requests": [
+			{
+				"id": "2061d213-1fb1-4e58-a53c-d769e69ee746",
+				"method": "GET"
+			},
+			{
+				"id": "da175b71-49f5-4937-b9fa-2bb05fda2d29",
+				"method": "GET"
+			},
+			{
+				"id": "3ffe5e4e-472f-4fd5-8183-8dde83c9bc3e",
+				"method": "POST"
+			},
+			{
+				"id": "979d5560-c29b-45e6-980b-7ff08fc33096",
+				"method": "GET"
+			},
+			{
+				"id": "9c3f94a2-1e96-4ddd-b513-ceb5900ea056",
+				"method": "POST"
+			},
+			{
+				"id": "eecfc693-8068-4402-9b34-f7811bd30864",
+				"method": "POST"
+			},
+			{
+				"id": "a87df5ed-96cc-49f5-9570-d6235a4bfeb8",
+				"method": "GET"
+			},
+			{
+				"id": "384febe6-c1e4-4e14-8f53-7c6b95b65df5",
+				"method": "GET"
+			},
+			{
+				"id": "804fdc52-1819-4cca-9bf1-eb38c4906b4c",
+				"method": "DELETE"
+			}
+		]
+	}
+}
